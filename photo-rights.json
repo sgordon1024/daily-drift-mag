@@ -1,0 +1,13 @@
+{
+  "asset": "assets/earthrise.jpg",
+  "sha256": "1e48784b764f26c5e0755875d86efe088cb5cf9d183b7814956131652cb770c7",
+  "title": "Apollo 8: Earthrise",
+  "creator": "NASA / Bill Anders",
+  "photoYear": 1968,
+  "source": "https://www.nasa.gov/image-article/apollo-8-earthrise/",
+  "original": "https://www.nasa.gov/wp-content/uploads/2023/03/apollo08_earthrise.jpg",
+  "permission": "NASA informational/editorial use guidelines; image credited NASA on original page; no third-party copyright credit",
+  "rightsSource": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+  "usage": "Atmospheric editorial archival photograph; no implication of UFO evidence or NASA endorsement",
+  "changes": "CSS grayscale, contrast, grain/halftone and layout cropping; original JPEG unchanged"
+}
