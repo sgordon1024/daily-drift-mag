@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Daily Drift — All the weird that's fit to print</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #faf8f2;
+    --accent: #2d5a3d;
+    --ember: #c4622d;
+    --rule: #d8d2c4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.5;
+    padding: 0 16px 64px;
+  }
+  .page { max-width: 1100px; margin: 0 auto; }
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 1px;
+    padding: 10px 0; border-bottom: 1px solid var(--rule);
+    color: #555;
+  }
+  .topbar a { color: var(--accent); text-decoration: none; font-weight: bold; }
+  .nameplate { text-align: center; padding: 18px 0 8px; }
+  .nameplate h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 900; letter-spacing: -1px; line-height: 1;
+  }
+  .nameplate .tagline { font-style: italic; color: #555; margin-top: 6px; }
+  .van-mark { display: block; margin: 0 auto 4px; }
+  .doublerule { border-top: 3px solid var(--ink); border-bottom: 1px solid var(--ink); height: 5px; margin: 10px 0 24px; }
+  .lead { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--rule); margin-bottom: 24px; }
+  .kicker { font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: var(--ember); margin-bottom: 8px; }
+  .lead h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.1; margin-bottom: 12px; }
+  .lead h2 a { color: var(--ink); text-decoration: none; }
+  .lead h2 a:hover { text-decoration: underline; }
+  .summary { font-size: 17px; color: #333; margin-bottom: 10px; }
+  .byline { font-family: Arial, sans-serif; font-size: 12px; color: #777; text-transform: uppercase; letter-spacing: 1px; }
+  figure img { width: 100%; height: auto; display: block; filter: sepia(0.15); }
+  figcaption { font-family: Arial, sans-serif; font-size: 12px; color: #777; padding-top: 6px; font-style: italic; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
+  .card { border-top: 2px solid var(--ink); padding-top: 12px; }
+  .card h3 { font-size: 22px; line-height: 1.2; margin-bottom: 8px; }
+  .card h3 a { color: var(--ink); text-decoration: none; }
+  .card h3 a:hover { color: var(--accent); }
+  .card figure { margin: 10px 0; }
+  .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; margin: 10px 0; }
+  .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-link { display: inline-block; margin: 10px 0; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; color: var(--ember); text-decoration: none; border: 1px solid var(--ember); padding: 6px 12px; border-radius: 3px; }
+  footer { margin-top: 48px; border-top: 3px double var(--ink); padding-top: 16px; text-align: center; font-family: Arial, sans-serif; font-size: 12px; color: #777; text-transform: uppercase; letter-spacing: 1px; }
+  footer a { color: var(--accent); }
+  .empty { text-align: center; padding: 80px 20px; font-style: italic; color: #666; font-size: 20px; }
+  @media (max-width: 760px) { .lead { grid-template-columns: 1fr; } }
+
+  /* Responsive reading and comfortable touch navigation. */
+  .grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  .lead > div, .card { min-width: 0; }
+  .lead.no-media { grid-template-columns: 1fr; }
+  .nameplate h1 { font-size: clamp(2.2rem, 12vw, 6rem); }
+  a { touch-action: manipulation; }
+  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+  .topbar a, footer a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 4px; }
+  .lead h2 a, .card h3 a { display: block; min-height: 44px; }
+  .card .summary { font-size: 17px !important; }
+  @media (max-width: 600px) {
+    .topbar { display: grid; grid-template-columns: 1fr auto; gap: 0 12px; padding: 8px 0; }
+    #dateline { grid-column: 1 / -1; }
+    .topbar a { justify-self: end; }
+    .nameplate { padding-top: 20px; }
+    .lead { gap: 0; }
+    .lead:not(.no-media) { gap: 20px; }
+    .grid { gap: 24px; }
+    .summary { line-height: 1.6; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topbar">
+    <span id="dateline">&mdash;</span>
+    <span>&#128656; Van Dispatch</span>
+    <a href="index.html">Archive</a>
+  </div>
+  <div class="nameplate">
+    <svg class="van-mark" width="72" height="40" viewBox="0 0 72 40" aria-hidden="true">
+      <rect x="4" y="8" width="46" height="20" rx="3" fill="#2d5a3d"/>
+      <path d="M50 14 L62 14 L68 24 L68 28 L50 28 Z" fill="#2d5a3d"/>
+      <rect x="52" y="16" width="8" height="6" fill="#faf8f2"/>
+      <rect x="8" y="12" width="10" height="7" fill="#faf8f2"/>
+      <rect x="22" y="12" width="10" height="7" fill="#faf8f2"/>
+      <circle cx="18" cy="30" r="5" fill="#1a1a1a"/><circle cx="18" cy="30" r="2" fill="#faf8f2"/>
+      <circle cx="56" cy="30" r="5" fill="#1a1a1a"/><circle cx="56" cy="30" r="2" fill="#faf8f2"/>
+      <rect x="30" y="4" width="8" height="4" fill="#c4622d"/>
+    </svg>
+    <h1>The Daily Drift</h1>
+    <div class="tagline">All the weird that's fit to print.</div>
+  </div>
+  <div class="doublerule"></div>
+  <main id="frontpage"></main>
+  <footer>
+    Published from the van &middot; somewhere with decent signal &middot; <a href="index.html">Past editions</a>
+  </footer>
+</div>
+
+<script type="application/json" id="paper-data">
+{
+  "paperDate": "2026-10-03",
+  "stories": [
+    {
+      "headline": "Mystery emu leads animal services on chase in Virginia",
+      "summary": "Animal services officers in Prince George County, Virginia, captured an emu after a chase and were still trying to find its owner.",
+      "category": "ODD ANIMALS",
+      "source": "UPI",
+      "url": "https://www.upi.com/Odd_News/2026/10/02/escaped-emu-prince-george-county-virginia/5511790952157/",
+      "image": null,
+      "video": null,
+      "publishedAt": "2026-10-02T00:00:00Z"
+    },
+    {
+      "headline": "Hungarian energy drink fan amasses world's largest can collection",
+      "summary": "A Hungarian collector told UPI that one hot day in 2008 started the obsession that became a Guinness World Record collection of 2,000 energy drink cans.",
+      "category": "WORLD RECORD",
+      "source": "UPI",
+      "url": "https://www.upi.com/Odd_News/2026/10/02/hungary-guinness-world-records-energy-drink-cans/2031790952808/",
+      "image": null,
+      "video": null,
+      "publishedAt": "2026-10-02T00:00:00Z"
+    },
+    {
+      "headline": "Arkansas gem hunter finds a diamond he claims could be worth $1 million",
+      "summary": "After years of searching at Crater of Diamonds State Park, Jack Pearadin found a 6.03-carat diamond he believes could be worth seven figures.",
+      "category": "LUCKY FINDS",
+      "source": "Associated Press",
+      "url": "https://apnews.com/article/diamonds-arkansas-crater-state-park-mining-7c55f0a2d4145f5fb4319ef421cd4760",
+      "image": null,
+      "video": null,
+      "publishedAt": "2026-10-02T00:00:00Z"
+    },
+    {
+      "headline": "Crews hoist trapped fawn from storm drain in North Carolina",
+      "summary": "Firefighters, animal control officers and public works crews in Cary teamed up to lift a stranded fawn out of a storm drain.",
+      "category": "ANIMAL RESCUE",
+      "source": "UPI",
+      "url": "https://www.upi.com/Odd_News/2026/10/02/trapped-fawn-storm-drain-Cary-North-Carolina/7521790953751/",
+      "image": null,
+      "video": null,
+      "publishedAt": "2026-10-02T00:00:00Z"
+    },
+    {
+      "headline": "Mother bear attacks car on road in Japan",
+      "summary": "Police in Hokkaido released dashboard-camera footage from a driver whose car was attacked by a mother bear on the road.",
+      "category": "WILD ROADS",
+      "source": "UPI",
+      "url": "https://www.upi.com/Odd_News/2026/10/02/japan-brown-bear-attacks-car-Hokkaido-Japan/2111790954207/",
+      "image": null,
+      "video": null,
+      "publishedAt": "2026-10-02T00:00:00Z"
+    },
+    {
+      "headline": "Ohio man's $25,417 lottery prize is not his first win",
+      "summary": "An Ohio Pick 5 player with multiple previous prizes added another $25,417 lottery win to his running total.",
+      "category": "LOTTERY LUCK",
+      "source": "UPI",
+      "url": "https://www.upi.com/Odd_News/2026/10/02/lotto-Ohio-Lottery-repeat-Pick-5-winner/2301790959261/",
+      "image": null,
+      "video": null,
+      "publishedAt": "2026-10-02T00:00:00Z"
+    }
+  ]
+}
+</script>
+
+<script>
+(function () {
+  // When this file is viewed as an archived copy inside /archive/, fix the
+  // archive links so they point back to the front page.
+  if (/\/archive\//.test(location.pathname)) {
+    document.querySelectorAll('a[href="index.html"]').forEach(function (a) {
+      a.setAttribute('href', 'index.html');
+    });
+  }
+  var data = JSON.parse(document.getElementById('paper-data').textContent);
+  var main = document.getElementById('frontpage');
+  try {
+    var d = new Date(data.paperDate + 'T12:00:00');
+    document.getElementById('dateline').textContent =
+      d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  } catch (e) { document.getElementById('dateline').textContent = data.paperDate; }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function youTubeId(url) {
+    var m = String(url).match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/);
+    return m ? m[1] : null;
+  }
+  function mediaHtml(st) {
+    var h = '';
+    if (st.video) {
+      var id = youTubeId(st.video);
+      if (id) {
+        h += '<div class="video-wrap"><iframe src="https://www.youtube.com/embed/' + id +
+             '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
+      } else {
+        h += '<a class="video-link" href="' + esc(st.video) + '" target="_blank" rel="noopener">&#9654; Watch the video</a>';
+      }
+    }
+    if (st.image) {
+      h += '<figure><img src="' + esc(st.image) + '" alt="" loading="lazy" onerror="this.closest(\'figure\').style.display=\'none\'">' +
+           '<figcaption>' + esc(st.source || '') + '</figcaption></figure>';
+    }
+    return h;
+  }
+  function sourceLine(st) {
+    var bits = [];
+    if (st.source) bits.push('Via ' + esc(st.source));
+    if (st.publishedAt) {
+      try { bits.push(new Date(st.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })); } catch (e) {}
+    }
+    return bits.length ? '<div class="byline">' + bits.join(' &middot; ') + '</div>' : '';
+  }
+  if (!data.stories || !data.stories.length) {
+    main.innerHTML = '<div class="empty">First edition is on its way &mdash; Lydia is out on the beat.<br>Check back tomorrow morning.</div>';
+    return;
+  }
+  var lead = data.stories[0], rest = data.stories.slice(1);
+  var hasLeadMedia = !!(lead.image || lead.video);
+  var h = '<article class="lead' + (hasLeadMedia ? '' : ' no-media') + '"><div>' +
+    (lead.category ? '<div class="kicker">' + esc(lead.category) + '</div>' : '') +
+    '<h2><a href="' + esc(lead.url) + '" target="_blank" rel="noopener">' + esc(lead.headline) + '</a></h2>' +
+    '<p class="summary">' + esc(lead.summary) + '</p>' + sourceLine(lead) + '</div>' +
+    (hasLeadMedia ? '<div>' + mediaHtml(lead) + '</div>' : '') + '</article>';
+  if (rest.length) {
+    h += '<div class="grid">' + rest.map(function (st) {
+      return '<article class="card">' +
+        (st.category ? '<div class="kicker">' + esc(st.category) + '</div>' : '') +
+        '<h3><a href="' + esc(st.url) + '" target="_blank" rel="noopener">' + esc(st.headline) + '</a></h3>' +
+        '<p class="summary" style="font-size:15px">' + esc(st.summary) + '</p>' +
+        mediaHtml(st) + sourceLine(st) + '</article>';
+    }).join('') + '</div>';
+  }
+  main.innerHTML = h;
+})();
+</script>
+</body>
+</html>
