@@ -1,0 +1,26 @@
+.dispatch.immersive-cover{position:relative;isolation:isolate;display:block;width:100vw;max-width:none;height:clamp(620px,82svh,960px);margin:18px calc(50% - 50vw) 0;padding:0;overflow:hidden;overflow:clip;background:#10130f;border:0}
+.immersive-cover::after{content:"";position:absolute;inset:auto 0 0;height:130px;background:linear-gradient(transparent,#10130f);z-index:5;pointer-events:none}
+.immersive-cover .dispatch-art{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;margin:0;padding:0;border:0;background:none;box-shadow:none;transform:none;overflow:visible}
+.immersive-cover .dispatch-art>img{width:100%;height:100%;object-fit:cover;border:0}
+.immersive-cover .dispatch-copy{position:absolute;left:max(6vw,24px);top:11%;z-index:6;max-width:33%;pointer-events:none}
+.immersive-cover .dispatch-copy .eyebrow{font:700 11px/1.6 Arial,sans-serif;letter-spacing:.18em;color:#f99255;margin:0 0 18px}
+.immersive-cover h2#dispatch-title{font:800 clamp(38px,4.5vw,70px)/.98 Arial,sans-serif;letter-spacing:-.055em;text-transform:uppercase;margin:0;max-width:390px;color:#eee7d3;text-shadow:0 2px 20px #10130f}
+.immersive-cover .intro{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.immersive-cover .dispatch-copy>a{display:none}
+.cover-layer{position:absolute;pointer-events:none;transform:translate3d(0,0,0);transform-origin:50% 50%}
+.cover-layer img{display:block;width:100%;height:auto;aspect-ratio:auto;max-width:none;border:0}
+.cover-galaxy{width:46%;left:35%;top:1%;z-index:1}
+.cover-telescope{width:43%;right:-2%;top:29%;z-index:3}
+.cover-speaker{width:32%;left:30%;bottom:7%;z-index:3}
+.cover-reef{width:66%;left:-10%;bottom:-12%;z-index:4}
+.cover-sky{position:absolute;inset:0;width:100%;height:100%;opacity:.65;pointer-events:none}
+.immersive-cover .dispatch-art figcaption{position:absolute;bottom:23px;right:max(6vw,24px);z-index:7;margin:0;padding:0;border:0;background:none;max-width:320px;color:#c9c4b4;font:11px/1.6 Arial,sans-serif;text-align:right}
+.cover-bottom{position:absolute;left:max(6vw,24px);bottom:24px;z-index:7;display:flex;align-items:center;gap:28px}
+.cover-enter{color:#eee7d3;font:700 12px/1.6 Arial,sans-serif;letter-spacing:.09em;text-transform:uppercase;text-underline-offset:7px}
+.cover-motion{font:11px/1.5 Arial,sans-serif;color:#bdbdad;background:transparent;border:1px solid #656958;padding:8px 12px;border-radius:20px;cursor:pointer}
+.cover-motion[hidden]{display:none}.cover-motion:hover{color:#fff;border-color:#ddd}.cover-motion:focus-visible,.cover-enter:focus-visible{outline:2px solid #fa8745;outline-offset:5px}
+.immersive-cover[data-motion="active"] .cover-layer{will-change:transform}
+@media(min-width:1700px){.cover-reef{width:58%;bottom:-24%}.cover-galaxy{width:36%;left:40%}.cover-telescope{width:39%;top:13%;right:0}.cover-speaker{width:25%;bottom:5%}}
+@media(max-width:760px){.dispatch.immersive-cover{height:650px;margin-top:10px}.immersive-cover .dispatch-copy{top:7%;left:24px;max-width:65%}.immersive-cover h2#dispatch-title{font-size:42px;max-width:270px}.immersive-cover .dispatch-copy .eyebrow{font-size:10px;margin-bottom:14px}.cover-galaxy{width:76%;left:28%;top:8%}.cover-telescope{width:65%;right:-5%;top:47%}.cover-reef{width:105%;left:-18%;bottom:0}.cover-speaker{width:55%;left:21%;bottom:12%}.cover-bottom{left:24px;bottom:55px;gap:18px}.immersive-cover .dispatch-art figcaption{bottom:15px;left:24px;right:auto;max-width:calc(100% - 48px);font-size:10px;text-align:left}.immersive-cover::after{height:115px}}
+@media(max-width:380px){.immersive-cover h2#dispatch-title{font-size:36px;max-width:225px}.dispatch.immersive-cover{height:600px}.cover-galaxy{width:88%;left:19%;top:13%}.cover-telescope{top:48%;width:72%}.cover-reef{width:120%;left:-24%;bottom:4%}.cover-speaker{bottom:15%;left:16%;width:64%}.cover-bottom{gap:13px}.cover-enter{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.cover-layer{transform:none!important;will-change:auto!important}.cover-motion{display:none!important}}
